@@ -28,7 +28,7 @@ func main() {
 	repository.Init()
 
 	r := gin.Default()
-	store, err := redis.NewStore(10, "tcp", "localhost:6379", "", []byte(cfg.Spec.Secret))
+	store, err := redis.NewStore(10, "tcp", "redis:6379", "", []byte(cfg.Spec.Secret))
 	if err != nil {
 		panic(err)
 	}

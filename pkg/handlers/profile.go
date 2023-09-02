@@ -16,9 +16,10 @@ func GetProfile(c *gin.Context) {
 	userID := getUserIDFromSession(c)
 	p, err := repository.GetProfile(userID)
 	if err != nil {
-		var newProfile model.Profile
+		newProfile := model.Profile{}
 		newProfile.UserID = userID
-		c.JSON(http.StatusOK, &newProfile)
+		c.JSON(http.StatusOK, newProfile)
+		return
 	}
 	c.JSON(http.StatusOK, p)
 }
